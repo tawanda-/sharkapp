@@ -1,0 +1,3 @@
+npm update -g react-viro-cli
+react-viro init SharkApp
+./setup-ide.sh --all
