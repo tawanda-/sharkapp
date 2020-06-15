@@ -51,6 +51,8 @@ export default class GreatWhiteSharkScene extends Component {
               style={{ color: "#ffffff", flex: 1, backgroundColor:'black' }}
               text={"Great White Shark"}
               fontSize={20}
+              width={3} 
+              height={1}
             />
           </ViroFlexView>
         </ViroARCamera>

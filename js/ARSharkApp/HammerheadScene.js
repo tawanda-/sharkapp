@@ -49,6 +49,8 @@ export default class HammerheadScene extends Component {
               style={{ color: "#ffffff", flex: 1 }}
               text={"Hammerhead Shark"}
               fontSize={20}
+              width={3} 
+              height={1}
             />
           </ViroFlexView>
         </ViroARCamera>
