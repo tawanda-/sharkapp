@@ -48,8 +48,8 @@ export default class GreatWhiteSharkScene extends Component {
             opacity={0.5}
           >
             <ViroText
-              style={{ color: "#ffffff", flex: 1 }}
-              text={"Stone Shark"}
+              style={{ color: "#ffffff", flex: 1, backgroundColor:'black' }}
+              text={"Great White Shark"}
               fontSize={20}
             />
           </ViroFlexView>

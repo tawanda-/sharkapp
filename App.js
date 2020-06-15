@@ -8,7 +8,7 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 
 import { ViroARSceneNavigator } from "react-viro";
 
@@ -21,6 +21,10 @@ var scenes = [GreatWhiteScene, HammerheadScene, StoneScene];
 export default class SharkApp extends Component {
   constructor() {
     super();
+
+    this.state = {
+      screenIndex: 0,
+    };
 
     this._getARNavigator = this._getARNavigator.bind(this);
     this._captureScreenShot = this._captureScreenShot.bind(this);
@@ -37,26 +41,25 @@ export default class SharkApp extends Component {
       <View style={localStyles.viroContainer}>
         <ViroARSceneNavigator
           ref={(ARSceneNav) => (this.ARSceneNav = ARSceneNav)}
-          {...this.state.sharedProps}
           initialScene={{ scene: GreatWhiteScene }}
           style={{ flex: 1 }}
         />
         <View style={localStyles.forwardArrow}>
           <TouchableHighlight onPress={this._pushNextScene}>
             <Image
-              source={require("./js/res/forwardarrow/forwardarrow.png")}
+              source={require("./js/ARSharkApp/res/forwardarrow/forwardarrow.png")}
             />
           </TouchableHighlight>
         </View>
         <View style={localStyles.backArrow}>
           <TouchableHighlight onPress={this._popScene}>
-            <Image source={require("./js/res/backarrow/backarrow.png")} />
+            <Image source={require("./js/ARSharkApp/res/backarrow/backarrow.png")} />
           </TouchableHighlight>
         </View>
         <View style={localStyles.screenshotButton}>
-          <TouchableHighlight style={localStyles.screenshotButton} onPress={this._captureScreenShot}>
+          <TouchableHighlight onPress={this._captureScreenShot}>
             <Image
-              source={require("./js/res/photcamerabutton/photocamerabutton.png")}
+              source={require("./js/ARSharkApp/res/photocamerabutton/photocamerabutton.png")}
             />
           </TouchableHighlight>
         </View>

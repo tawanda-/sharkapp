@@ -34,9 +34,9 @@ export default class StoneSharkScene extends Component {
             source={require("./res/stoneshark/stoneshark.obj")}
             resources={[
               require("./res/stoneshark/stoneshark.mtl"),
-              require("./res/stoneshark/stoneshark/Benedeti.jpg"),
-              require("./res/stoneshark/stoneshark/Limesto3.jpg"),
-              require("./res/stoneshark/stoneshark/Medrust3.jpg"),
+              require("./res/stoneshark/Benedeti.jpg"),
+              require("./res/stoneshark/Limesto3.jpg"),
+              require("./res/stoneshark/Medrust3.jpg"),
             ]}
             type="OBJ"
           />
