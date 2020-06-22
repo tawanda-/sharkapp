@@ -12,11 +12,11 @@ import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 
 import { ViroARSceneNavigator } from "react-viro";
 
-var StoneScene = require("./js/ARSharkApp/StoneSharkScene");
-var HammerheadScene = require("./js/ARSharkApp/HammerheadScene");
+//var StoneScene = require("./js/ARSharkApp/StoneSharkScene");
+//var HammerheadScene = require("./js/ARSharkApp/HammerheadScene");
 var GreatWhiteScene = require("./js/ARSharkApp/GreatWhiteSharkScene");
 
-var scenes = [GreatWhiteScene, HammerheadScene, StoneScene];
+//var scenes = [GreatWhiteScene, HammerheadScene, StoneScene];
 
 export default class SharkApp extends Component {
   constructor() {
@@ -24,6 +24,7 @@ export default class SharkApp extends Component {
 
     this.state = {
       screenIndex: 0,
+      viroAppProps:{screen:0},
     };
 
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -41,21 +42,31 @@ export default class SharkApp extends Component {
       <View style={localStyles.viroContainer}>
         <ViroARSceneNavigator
           ref={(ARSceneNav) => (this.ARSceneNav = ARSceneNav)}
-          initialScene={{ scene: GreatWhiteScene }}
+          initialScene={{ scene: GreatWhiteScene}} 
+           viroAppProps={this.state.viroAppProps}
           style={{ flex: 1 }}
+          autofocus={true}
         />
-        <View style={localStyles.forwardArrow}>
-          <TouchableHighlight onPress={this._pushNextScene}>
-            <Image
-              source={require("./js/ARSharkApp/res/forwardarrow/forwardarrow.png")}
-            />
-          </TouchableHighlight>
-        </View>
-        <View style={localStyles.backArrow}>
-          <TouchableHighlight onPress={this._popScene}>
-            <Image source={require("./js/ARSharkApp/res/backarrow/backarrow.png")} />
-          </TouchableHighlight>
-        </View>
+        {this.state.screenIndex < 2 && (
+          <View style={localStyles.forwardArrow}>
+            <TouchableHighlight onPress={this._pushNextScene}>
+              <Image
+                source={require("./js/ARSharkApp/res/forwardarrow/forwardarrow.png")}
+              />
+            </TouchableHighlight>
+          </View>
+        )}
+
+        {this.state.screenIndex > 0 && (
+          <View style={localStyles.backArrow}>
+            <TouchableHighlight onPress={this._popScene}>
+              <Image
+                source={require("./js/ARSharkApp/res/backarrow/backarrow.png")}
+              />
+            </TouchableHighlight>
+          </View>
+        )}
+
         <View style={localStyles.screenshotButton}>
           <TouchableHighlight onPress={this._captureScreenShot}>
             <Image
@@ -73,20 +84,23 @@ export default class SharkApp extends Component {
   }
 
   _pushNextScene() {
-    let newIndex = this.state.screenIndex + 1;
-    this.setState({
-      screenIndex: newIndex,
-    });
-    this.ARSceneNav.sceneNavigator.push({ scene: scenes[newIndex] });
+    if (this.state.screenIndex < 2) {
+      let newIndex = this.state.screenIndex + 1;
+      this.setState({
+        screenIndex: newIndex,
+        viroAppProps: {screen:newIndex},
+      });
+    }
   }
 
   _popScene() {
-    let newIndex = this.state.screenIndex - 1;
-    if (newIndex >= 0) {
+    if (this.state.screenIndex > 0) {
+      let newIndex = this.state.screenIndex - 1;
+
       this.setState({
         screenIndex: newIndex,
+        viroAppProps: {screen:newIndex},
       });
-      this.ARSceneNav.sceneNavigator.pop();
     }
   }
 }

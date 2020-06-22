@@ -21,16 +21,21 @@ export default class StoneSharkScene extends Component {
     return (
       <ViroARScene>
         <ViroAmbientLight color="#ffffff" intensity={200} />
-        <ViroARCamera>
+        <ViroARCamera position={[0, 0, 0.2]}>
           <ViroImage
-            position={[-0.25, 0.5, -1]}
-            scale={[0.2, 0.2, 0]}
+            position={[-0.16, 0.5, -1.2]}
+            scale={[1, 1, 1]}
+            width={0.4}
+            height={0.25}
+            resizeMode="ScaleToFit"
+            imageClipMode="None"
+            placeholderSource={require("./res/applogo/logo.png")}
             source={require("./res/applogo/logo.png")}
           />
           <Viro3DObject
-            position={[-1, 0, -10]}
-            scale={[1, 1, 1]}
-            rotation={[0, 45, 0]}
+            position={[-1, 0, -3]}
+            scale={[0.5, 0.5, 0.5]}
+            rotation={[-45, 45, 0]}
             source={require("./res/stoneshark/stoneshark.obj")}
             resources={[
               require("./res/stoneshark/stoneshark.mtl"),
@@ -43,16 +48,17 @@ export default class StoneSharkScene extends Component {
           <ViroFlexView
             height={1}
             width={4}
-            position={[0, -2.5, -5]}
-            backgroundColor={"#434e64"}
-            opacity={0.5}
+            position={[0, -2.5, -5.1]}
+            opacity={0.8}
+            backgroundColor={"#16264d"}
           >
             <ViroText
               style={{ color: "#ffffff", flex: 1 }}
               text={"Stone Shark"}
-              fontSize={20}
-              width={3} 
+              fontSize={15}
+              width={4}
               height={1}
+              textAlign="center"
             />
           </ViroFlexView>
         </ViroARCamera>
