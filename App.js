@@ -14,9 +14,10 @@ import { ViroARSceneNavigator } from "react-viro";
 
 //var StoneScene = require("./js/ARSharkApp/StoneSharkScene");
 //var HammerheadScene = require("./js/ARSharkApp/HammerheadScene");
-var GreatWhiteScene = require("./js/ARSharkApp/GreatWhiteSharkScene");
-
+//var GreatWhiteScene = require("./js/ARSharkApp/GreatWhiteSharkScene");
 //var scenes = [GreatWhiteScene, HammerheadScene, StoneScene];
+
+var SharkScene = require("./js/ARSharkApp/SharkScene");
 
 export default class SharkApp extends Component {
   constructor() {
@@ -42,7 +43,7 @@ export default class SharkApp extends Component {
       <View style={localStyles.viroContainer}>
         <ViroARSceneNavigator
           ref={(ARSceneNav) => (this.ARSceneNav = ARSceneNav)}
-          initialScene={{ scene: GreatWhiteScene}} 
+          initialScene={{ scene: SharkScene}} 
            viroAppProps={this.state.viroAppProps}
           style={{ flex: 1 }}
           autofocus={true}
