@@ -48,7 +48,7 @@ export default class SharkApp extends Component {
           style={{ flex: 1 }}
           autofocus={true}
         />
-        {this.state.screenIndex < 2 && (
+        {this.state.screenIndex < 1 && (
           <View style={localStyles.forwardArrow}>
             <TouchableHighlight onPress={this._pushNextScene}>
               <Image

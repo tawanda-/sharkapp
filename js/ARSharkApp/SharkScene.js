@@ -18,10 +18,6 @@ export default class SharkScene extends Component {
     super();
   }
 
-  //
-  //resizeMode="ScaleToFit"
-  //imageClipMode="None"
-
   render() {
     return (
       <ViroARScene>
@@ -53,24 +49,50 @@ export default class SharkScene extends Component {
               />
 
               <ViroFlexView
-                height={1.5}
-                width={3.3}
-                position={[0, -2.5, -4.0]}
-                opacity={0.6}
-                backgroundColor={"#16264d"}
+                height={1.7}
+                width={4}
+                position={[0, -2.2, -5.1]}
+                opacity={0.7}
+                backgroundColor={"#4A4A4A"}
               >
-                <ViroText
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "Aller-Bold",
-                  }}
-                  text={"Great White Shark"}
-                  fontSize={15}
-                  width={3.3}
-                  height={1}
-                  textClipMode="ClipToBounds"
-                  textAlign="center"
-                />
+                <ViroFlexView
+                  height={0.6}
+                  width={4}
+                >
+                  <ViroText
+                    style={{
+                      color: "#ffffff",
+                      fontFamily: "Aller",
+                      fontStyle:"Bold",
+                      fontSize: 20,
+                      fontWeight:"700",
+                    }}
+                    text={"Great White Shark"}
+                    textAlign="center"
+                    textAlignVertical={"center"}
+                  />
+                </ViroFlexView>
+                <ViroFlexView
+                  height={1.1}
+                  width={4}
+                >
+                  <ViroText
+                    style={{
+                      color: "#ffffff",
+                      fontFamily: "Aller",
+                      fontStyle:"Regular",
+                      fontWeight:"400",
+                      marginLeft: 0.2,
+                      marginRight: 0.1,
+                    }}
+                    textClipMode="ClipToBounds"
+                    textAlign="left"
+                    text={
+                      "Great whites are the world's largest predatory fish, according to Discovery. They grow to be about 4.6 to 6.1 meters or more and can weigh more than 2,268 kilograms. Though massive, the great white is not the biggest shark."
+                    }
+                    fontSize={16}
+                  />
+                </ViroFlexView>
               </ViroFlexView>
             </ViroNode>
           )}
@@ -79,7 +101,7 @@ export default class SharkScene extends Component {
               <Viro3DObject
                 position={[-1, 0, -5]}
                 scale={[0.25, 0.25, 0.25]}
-                rotation={[-45, 45, 0]}
+                rotation={[-90, 140, 0]}
                 source={require("./res/hammerheadshark/hammerheadshark.obj")}
                 resources={[
                   require("./res/hammerheadshark/hammerheadshark.mtl"),
@@ -89,60 +111,44 @@ export default class SharkScene extends Component {
               />
 
               <ViroFlexView
-                height={1}
+                height={1.7}
                 width={4}
-                position={[0, -2.5, -5.2]}
-                opacity={0.6}
-                backgroundColor={"#16264d"}
+                position={[0, -2.2, -5.2]}
+                opacity={0.7}
+                backgroundColor={"#4A4A4A"}
               >
-                <ViroText
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "Aller-Regular",
-                  }}
-                  text={"Hammerhead Shark"}
-                  fontSize={20}
-                  width={4}
-                  height={1}
-                  textAlign="center"
-                />
-              </ViroFlexView>
-            </ViroNode>
-          )}
-          {this.props.arSceneNavigator.viroAppProps.screen == 2 && (
-            <ViroNode>
-              <Viro3DObject
-                position={[-1, 0, -4.5]}
-                scale={[0.2, 0.2, 0.2]}
-                rotation={[0, 45, 0]}
-                source={require("./res/shark_stone/shark_01.obj")}
-                resources={[
-                  require("./res/shark_stone/shark_01.mtl"),
-                  require("./res/shark_stone/Benedeti.jpg"),
-                  require("./res/shark_stone/Limesto3.jpg"),
-                  require("./res/shark_stone/Medrust3.jpg"),
-                ]}
-                type="OBJ"
-              />
-
-              <ViroFlexView
-                height={1.25}
-                width={4}
-                position={[0, -2.5, -5.1]}
-                opacity={0.6}
-                backgroundColor={"#16264d"}
-              >
-                <ViroText
-                  style={{
-                    color: "#ffffff",
-                    fontFamily: "AvenirNext-Italic",
-                    fontSize: 18,
-                  }}
-                  text={"Stone Shark"}
-                  width={4}
-                  height={1}
-                  textAlign="center"
-                />
+                <ViroFlexView height={0.6} width={4}>
+                  <ViroText
+                    style={{
+                      color: "#ffffff",
+                      fontFamily: "Aller",
+                      fontStyle:"Bold",
+                      fontSize: 20,
+                      fontWeight:"700",
+                    }}
+                    text={"Hammerhead Shark"}
+                    textAlign="center"
+                    textAlignVertical={"center"}
+                  />
+                </ViroFlexView>
+                <ViroFlexView height={1.1} width={4}>
+                  <ViroText
+                    style={{
+                      color: "#ffffff",
+                      marginLeft: 0.2,
+                      marginRight: 0.1,
+                      fontFamily: "Aller",
+                      fontStyle:"Regular",
+                      fontWeight:"400",
+                    }}
+                    textClipMode="ClipToBounds"
+                    textAlign="left"
+                    text={
+                      "Great whites are the world's largest predatory fish, according to Discovery. They grow to be about 4.6 to 6.1 meters or more and can weigh more than 2,268 kilograms. Though massive, the great white is not the biggest shark."
+                    }
+                    fontSize={16}
+                  />
+                </ViroFlexView>
               </ViroFlexView>
             </ViroNode>
           )}
@@ -153,17 +159,3 @@ export default class SharkScene extends Component {
 }
 
 module.exports = SharkScene;
-
-//style={{ flexDirection: "column", padding: 1 }}
-
-/**<ViroText
-              width={3.8}
-              height={1}
-              style={{ color: "#ffffff" }}
-              textClipMode="ClipToBounds"
-              textAlign="left"
-              text={
-                "Great whites are the world's largest predatory fish, according to Discovery. They grow to be about 4.6 to 6.1 meters or more and can weigh more than 2,268 kilograms. Though massive, the great white is not the biggest shark."
-              }
-              fontSize={12}
-            /> */
