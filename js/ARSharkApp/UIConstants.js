@@ -1,0 +1,2 @@
+export const SHOW_SHARE_SCREEN = 'SHOW_SHARE_SCREEN';
+export const SHOW_MAIN_SCREEN = 'SHOW_MAIN_SCREEN';
