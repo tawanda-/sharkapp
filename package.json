@@ -5,11 +5,14 @@
   "scripts": {
     "prestart": "./node_modules/react-viro/bin/run_ngrok.sh",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest ios"
   },
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.9",
+    "react-native-fs": "^2.13.3",
+    "react-native-share": "^1.2.1",
     "react-viro": "^2.17.0"
   },
   "devDependencies": {

@@ -63,7 +63,7 @@ export default class SharkScene extends Component {
                     style={{
                       color: "#ffffff",
                       fontFamily: "Aller",
-                      fontStyle:"Bold",
+                      fontStyle:"normal",
                       fontSize: 20,
                       fontWeight:"700",
                     }}
@@ -80,7 +80,7 @@ export default class SharkScene extends Component {
                     style={{
                       color: "#ffffff",
                       fontFamily: "Aller",
-                      fontStyle:"Regular",
+                      fontStyle:"normal",
                       fontWeight:"400",
                       marginLeft: 0.2,
                       marginRight: 0.1,
@@ -122,7 +122,7 @@ export default class SharkScene extends Component {
                     style={{
                       color: "#ffffff",
                       fontFamily: "Aller",
-                      fontStyle:"Bold",
+                      fontStyle:"normal",
                       fontSize: 20,
                       fontWeight:"700",
                     }}
@@ -138,7 +138,7 @@ export default class SharkScene extends Component {
                       marginLeft: 0.2,
                       marginRight: 0.1,
                       fontFamily: "Aller",
-                      fontStyle:"Regular",
+                      fontStyle:"normal",
                       fontWeight:"400",
                     }}
                     textClipMode="ClipToBounds"
