@@ -70,3 +70,6 @@ package-lock.json
 metro.config.js
 index.js
 action_2020-08-17.zip
+*.rar
+*.zip
+REEFSHARK.glb

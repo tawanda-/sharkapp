@@ -8,16 +8,11 @@
  */
 
 import React, { Component } from "react";
-import {
-  Image,
-  View,
-  StyleSheet,
-  TouchableHighlight
-} from "react-native";
+import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 
 import { ViroARSceneNavigator } from "react-viro";
-import RNFS from 'react-native-fs';
-import Share from 'react-native-share';
+import RNFS from "react-native-fs";
+import Share from "react-native-share";
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
 var UIConstants = require("./js/ARSharkApp/UIConstants");
@@ -165,24 +160,21 @@ export default class SharkApp extends Component {
   }
 
   _openShareActionSheet = async () => {
-    let contentType = 'image/png';
-    try{
+    let contentType = "image/png";
+    try {
       await Share.open({
         subject: "Shark App",
         url: this.state.fileUrl,
         type: contentType,
-     });
+      });
 
-     this.setState({
-      currentScreen: UIConstants.SHOW_MAIN_SCREEN,
-    });
+      this.setState({
+        currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+      });
+    } catch (error) {}
+  };
 
-    }catch(error){
-      alert("There was a problem sharing the image, please try again.");
-    }
-}
-
-/*
+  /*
   _openShareActionSheet = () => {
 
     RNFS.readFile(this.state.fileUrl, 'base64').then(async res => {
