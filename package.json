@@ -12,8 +12,9 @@
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-fs": "^2.13.3",
-    "react-native-photo-editor": "^1.0.6",
+    "react-native-photo-editor": "0.0.7",
     "react-native-share": "^1.2.1",
+    "react-uuid": "^1.0.2",
     "react-viro": "^2.17.0"
   },
   "devDependencies": {

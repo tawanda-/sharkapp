@@ -13,6 +13,8 @@ import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 import { ViroARSceneNavigator } from "react-viro";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
+import { RNPhotoEditor } from "react-native-photo-editor";
+import uuid from "react-uuid";
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
 var UIConstants = require("./js/ARSharkApp/UIConstants");
@@ -26,6 +28,7 @@ export default class SharkApp extends Component {
       viroAppProps: { screen: 0 },
       currentScreen: UIConstants.SHOW_MAIN_SCREEN,
       fileUrl: "",
+      filename: "",
     };
 
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -34,6 +37,8 @@ export default class SharkApp extends Component {
     this._popScene = this._popScene.bind(this);
     this._renderShareScreen = this._renderShareScreen.bind(this);
     this._cancel = this._cancel.bind(this);
+    this._editScreenshot = this._editScreenshot.bind(this);
+    this._moveFile = this._moveFile.bind(this);
   }
 
   render() {
@@ -90,9 +95,11 @@ export default class SharkApp extends Component {
     );
   }
 
-  _captureScreenShot() {
-    this.ARSceneNav.sceneNavigator
-      .takeScreenshot("sharkappscreenshot", true)
+  _captureScreenShot = async () => {
+    let screenshotName = uuid();
+
+    await this.ARSceneNav.sceneNavigator
+      .takeScreenshot(screenshotName, true)
       .then((retDict) => {
         if (!retDict.success) {
           if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
@@ -103,11 +110,30 @@ export default class SharkApp extends Component {
           }
         }
         this.setState({
+          fileName: screenshotName,
           fileUrl: "file://" + retDict.url,
           currentScreen: UIConstants.SHOW_SHARE_SCREEN,
         });
+
+        //this._moveFile();
+
+        this._editScreenshot();
       });
-  }
+  };
+
+  _moveFile = async () => {
+    let photoPath =
+      RNFS.DocumentDirectoryPath + "/" + this.state.filename + ".jpg";
+
+    try {
+      await RNFS.moveFile(this.state.fileUrl, photoPath);
+      this.setState({
+        fileUrl: photoPath,
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   _renderShareScreen() {
     if (this.state.currentScreen == UIConstants.SHOW_SHARE_SCREEN) {
@@ -157,6 +183,33 @@ export default class SharkApp extends Component {
     this.setState({
       currentScreen: UIConstants.SHOW_MAIN_SCREEN,
     });
+  }
+
+  _editScreenshot() {
+    //alert(this.state.fileUrl);
+    //if (this.state.currentScreen == UIConstants.SHOW_SHARE_SCREEN) {
+    let photoPath = this.state.fileUrl;
+    RNPhotoEditor.Edit({
+      path: photoPath,
+      stickers: ["greatwhitesharktext"],
+      //   hiddenControls: ['clear', 'crop', 'draw', 'save', 'share', 'sticker', 'text'],
+      hiddenControls: ['clear', 'crop', 'draw', 'save', 'sticker', 'text'],
+      colors: undefined,
+      onDone: () => {
+        console.log("on done");
+        //this._openShareActionSheet;
+        this.setState({
+          currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+        });
+      },
+      onCancel: () => {
+        console.log("on cancel");
+        this.setState({
+          currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+        });
+      },
+    });
+    //}
   }
 
   _openShareActionSheet = async () => {
