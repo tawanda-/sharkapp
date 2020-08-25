@@ -38,12 +38,14 @@ export default class SharkScene extends Component {
                 position={[-1, 0, -4]}
                 scale={[0.4, 0.4, 0.4]}
                 rotation={[0, 45, 0]}
-                source={require("./res/greatwhiteshark/greatwhiteshark.obj")}
+                source={require("./res/reefshark/REEFSHARK.obj")}
                 resources={[
-                  require("./res/greatwhiteshark/greatwhiteshark.mtl"),
-                  require("./res/greatwhiteshark/Sharktexture002.png"),
-                  require("./res/greatwhiteshark/Sharkmouthtexture002.png"),
-                  require("./res/greatwhiteshark/shark0021200pxfoto10.png"),
+                  require("./res/reefshark/REEFSHARK.mtl"),
+                  require("./res/reefshark/REEFSHARK_ReefShark_Mat_Diffuse.png"),
+                  require("./res/reefshark/REEFSHARK_ReefShark_Mat_Glossiness.png"),
+                  require("./res/reefshark/REEFSHARK_ReefShark_Mat_Height.png"),
+                  require("./res/reefshark/REEFSHARK_ReefShark_Mat_Normal.png"),
+                  require("./res/reefshark/REEFSHARK_ReefShark_Mat_Specular.png")
                 ]}
                 type="OBJ"
               />
