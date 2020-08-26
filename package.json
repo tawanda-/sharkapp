@@ -12,6 +12,7 @@
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-fs": "^2.13.3",
+    "react-native-image-tools-wm": "^1.5.8",
     "react-native-photo-editor": "^1.0.6",
     "react-native-share": "^1.2.1",
     "react-uuid": "^1.0.2",

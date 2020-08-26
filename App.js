@@ -13,10 +13,14 @@ import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 import { ViroARSceneNavigator } from "react-viro";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
-import uuid from 'react-uuid'
+import uuid from 'react-uuid';
+import RNImageTools from 'react-native-image-tools-wm';
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
 var UIConstants = require("./js/ARSharkApp/UIConstants");
+
+const logoSource = Image.resolveAssetSource(require('./js/ARSharkApp/res/applogo/logo.png'));
+const textSource = Image.resolveAssetSource(require('./js/ARSharkApp/res/stickers/greatwhiteshark/greatwhitesharktext.png'));
 
 export default class SharkApp extends Component {
   constructor() {
@@ -36,6 +40,7 @@ export default class SharkApp extends Component {
     this._popScene = this._popScene.bind(this);
     this._renderShareScreen = this._renderShareScreen.bind(this);
     this._cancel = this._cancel.bind(this);
+    this._handleMergeImages = this._handleMergeImages.bind(this);
   }
 
   render() {
@@ -129,7 +134,21 @@ export default class SharkApp extends Component {
       });
   }
 
+  _handleMergeImages = async () => {
+    await RNImageTools.merge([
+      logoSource,
+      textSource.uri,
+    ]).then(mergedImage => {
+      this.setState({
+        fileUrl: mergedImage
+      });
+    }).catch(console.error);
+  };
+
   _renderShareScreen() {
+
+    this._handleMergeImages();
+
     if (this.state.currentScreen == UIConstants.SHOW_SHARE_SCREEN) {
       return (
         <View style={localStyles.shareScreenContainerTransparent}>
