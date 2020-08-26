@@ -13,6 +13,7 @@ import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 import { ViroARSceneNavigator } from "react-viro";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
+import uuid from 'react-uuid'
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
 var UIConstants = require("./js/ARSharkApp/UIConstants");
@@ -26,6 +27,7 @@ export default class SharkApp extends Component {
       viroAppProps: { screen: 0 },
       currentScreen: UIConstants.SHOW_MAIN_SCREEN,
       fileUrl: "",
+      originalScreenshotUrl:"",
     };
 
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -109,7 +111,7 @@ export default class SharkApp extends Component {
 
   _captureScreenShot() {
     this.ARSceneNav.sceneNavigator
-      .takeScreenshot("sharkappscreenshot", true)
+      .takeScreenshot(uuid(), true)
       .then((retDict) => {
         if (!retDict.success) {
           if (retDict.errorCode == ViroConstants.RECORD_ERROR_NO_PERMISSION) {
@@ -121,6 +123,7 @@ export default class SharkApp extends Component {
         }
         this.setState({
           fileUrl: "file://" + retDict.url,
+          originalScreenshotUrl: "file://" + retDict.url,
           currentScreen: UIConstants.SHOW_SHARE_SCREEN,
         });
       });
