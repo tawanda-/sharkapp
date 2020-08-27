@@ -8,19 +8,29 @@
  */
 
 import React, { Component } from "react";
-import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  Image,
+  View,
+  StyleSheet,
+  TouchableHighlight,
+  NativeModules,
+} from "react-native";
 
 import { ViroARSceneNavigator } from "react-viro";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
-import uuid from 'react-uuid';
-import RNImageTools from 'react-native-image-tools-wm';
+import uuid from "react-uuid";
+import RNImageTools from "react-native-image-tools-wm";
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
 var UIConstants = require("./js/ARSharkApp/UIConstants");
 
-const logoSource = Image.resolveAssetSource(require('./js/ARSharkApp/res/applogo/logo.png'));
-const textSource = Image.resolveAssetSource(require('./js/ARSharkApp/res/stickers/greatwhiteshark/greatwhitesharktext.png'));
+const logoSource = Image.resolveAssetSource(
+  require("./js/ARSharkApp/res/applogo/logo.png")
+);
+const textSource = Image.resolveAssetSource(
+  require("./js/ARSharkApp/res/stickers/greatwhiteshark/greatwhitesharktext.png")
+);
 
 export default class SharkApp extends Component {
   constructor() {
@@ -31,7 +41,7 @@ export default class SharkApp extends Component {
       viroAppProps: { screen: 0 },
       currentScreen: UIConstants.SHOW_MAIN_SCREEN,
       fileUrl: "",
-      originalScreenshotUrl:"",
+      originalScreenshotUrl: "",
     };
 
     this._getARNavigator = this._getARNavigator.bind(this);
@@ -92,7 +102,7 @@ export default class SharkApp extends Component {
           <View style={localStyles.sticker}>
             <Image
               style={{
-                width:"100%"
+                width: "100%",
               }}
               source={require("./js/ARSharkApp/res/stickers/greatwhiteshark/greatwhitesharktext.png")}
             />
@@ -135,6 +145,20 @@ export default class SharkApp extends Component {
   }
 
   _handleMergeImages = async () => {
+    var ie = NativeModules.ImageEditor;
+    ie.merge(this.state.fileUrl);
+
+    await ie
+      .merge(this.state.fileUrl)
+      .then(({ uri, width, height }) => {
+        // Sync with your app state
+        this.setState({
+          fileUrl: uri,
+        });
+      })
+      .catch(console.error);
+
+    /*
     await RNImageTools.merge([
       logoSource,
       textSource.uri,
@@ -142,11 +166,10 @@ export default class SharkApp extends Component {
       this.setState({
         fileUrl: mergedImage
       });
-    }).catch(console.error);
+    }).catch(console.error);*/
   };
 
   _renderShareScreen() {
-
     this._handleMergeImages();
 
     if (this.state.currentScreen == UIConstants.SHOW_SHARE_SCREEN) {
