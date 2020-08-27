@@ -89,16 +89,13 @@ export default class SharkApp extends Component {
             </TouchableHighlight>
           </View>
         )}
-
-        {this._renderShareScreen()}
       </View>
     );
   }
 
-  _captureScreenShot = async () => {
+  _captureScreenShot() {
     let screenshotName = uuid();
-
-    await this.ARSceneNav.sceneNavigator
+    this.ARSceneNav.sceneNavigator
       .takeScreenshot(screenshotName, true)
       .then((retDict) => {
         if (!retDict.success) {
@@ -109,17 +106,17 @@ export default class SharkApp extends Component {
             );
           }
         }
+        //alert("Done"+retDict.url);
         this.setState({
           fileName: screenshotName,
           fileUrl: "file://" + retDict.url,
           currentScreen: UIConstants.SHOW_SHARE_SCREEN,
         });
 
-        //this._moveFile();
-
         this._editScreenshot();
+        
       });
-  };
+  }
 
   _moveFile = async () => {
     let photoPath =
@@ -188,27 +185,32 @@ export default class SharkApp extends Component {
   _editScreenshot() {
     //alert(this.state.fileUrl);
     //if (this.state.currentScreen == UIConstants.SHOW_SHARE_SCREEN) {
-    let photoPath = this.state.fileUrl;
-    RNPhotoEditor.Edit({
-      path: photoPath,
-      stickers: ["greatwhitesharktext"],
-      //   hiddenControls: ['clear', 'crop', 'draw', 'save', 'share', 'sticker', 'text'],
-      hiddenControls: ['clear', 'crop', 'draw', 'save', 'sticker', 'text'],
-      colors: undefined,
-      onDone: () => {
-        console.log("on done");
-        //this._openShareActionSheet;
-        this.setState({
-          currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+      let photoPath = this.state.fileUrl;
+      try {
+        RNPhotoEditor.Edit({
+          path: photoPath,
+          stickers: ["greatwhitesharktext"],
+          //   hiddenControls: ['clear', 'crop', 'draw', 'save', 'share', 'sticker', 'text'],
+          hiddenControls: ["clear", "crop", "draw", "save", "sticker", "text"],
+          colors: undefined,
+          onDone: () => {
+            console.log("on done");
+            //this._openShareActionSheet;
+            this.setState({
+              currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+            });
+          },
+          onCancel: () => {
+            alert("cancel");
+            console.log("on cancel");
+            this.setState({
+              currentScreen: UIConstants.SHOW_MAIN_SCREEN,
+            });
+          },
         });
-      },
-      onCancel: () => {
-        console.log("on cancel");
-        this.setState({
-          currentScreen: UIConstants.SHOW_MAIN_SCREEN,
-        });
-      },
-    });
+      } catch (err) {
+        alert(err.message);
+      }
     //}
   }
 
@@ -300,7 +302,7 @@ var localStyles = StyleSheet.create({
   },
   screenshotButton: {
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "#000000",
     paddingTop: 15,
     paddingBottom: 15,
     height: 93,
