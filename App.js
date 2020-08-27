@@ -58,6 +58,12 @@ export default class SharkApp extends Component {
           />
         )}
 
+        {this.state.currentScreen == "SHOW_MAIN_SCREEN" && (
+          <View style={localStyles.logo}>
+            <Image source={require("./js/ARSharkApp/res/applogo/logo.png")} />
+          </View>
+        )}
+
         {this.state.screenIndex < 1 &&
           this.state.currentScreen == "SHOW_MAIN_SCREEN" && (
             <View style={localStyles.forwardArrow}>
@@ -81,6 +87,17 @@ export default class SharkApp extends Component {
           )}
 
         {this.state.currentScreen == "SHOW_MAIN_SCREEN" && (
+          <View style={localStyles.sticker}>
+            <Image
+              style={{
+                width: "100%",
+              }}
+              source={require("./js/ARSharkApp/res/stickers/greatwhiteshark/greatwhitesharktext.png")}
+            />
+          </View>
+        )}
+
+        {this.state.currentScreen == "SHOW_MAIN_SCREEN" && (
           <View style={localStyles.screenshotButton}>
             <TouchableHighlight onPress={this._captureScreenShot}>
               <Image
@@ -89,6 +106,7 @@ export default class SharkApp extends Component {
             </TouchableHighlight>
           </View>
         )}
+
       </View>
     );
   }
@@ -189,7 +207,7 @@ export default class SharkApp extends Component {
       try {
         RNPhotoEditor.Edit({
           path: photoPath,
-          stickers: ["greatwhitesharktext"],
+          stickers: ["greatwhitesharktext", "hammerheadtext"],
           //   hiddenControls: ['clear', 'crop', 'draw', 'save', 'share', 'sticker', 'text'],
           hiddenControls: ["clear", "crop", "draw", "save", "sticker", "text"],
           colors: undefined,
@@ -289,6 +307,19 @@ var localStyles = StyleSheet.create({
   viroContainer: {
     flex: 1,
     marginTop: 50,
+  },
+  logo: {
+    position: "absolute",
+    top: "5%",
+    left: 15,
+  },
+  sticker: {
+    position: "absolute",
+    width: "100%",
+    paddingEnd: 15,
+    paddingStart: 15,
+    bottom: 108,
+    left: 0,
   },
   forwardArrow: {
     position: "absolute",

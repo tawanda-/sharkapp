@@ -55,47 +55,6 @@ export default class SharkScene extends Component {
                 ]}
                 type="OBJ"
               />
-
-              <ViroFlexView
-                height={1.7}
-                width={4}
-                position={[0, -2.2, -5.2]}
-                opacity={0.7}
-                backgroundColor={"#4A4A4A"}
-              >
-                <ViroFlexView height={0.6} width={4}>
-                  <ViroText
-                    style={{
-                      color: "#ffffff",
-                      fontFamily: "Aller",
-                      fontStyle:"normal",
-                      fontSize: 20,
-                      fontWeight:"700",
-                    }}
-                    text={"Hammerhead Shark"}
-                    textAlign="center"
-                    textAlignVertical={"center"}
-                  />
-                </ViroFlexView>
-                <ViroFlexView height={1.1} width={4}>
-                  <ViroText
-                    style={{
-                      color: "#ffffff",
-                      marginLeft: 0.2,
-                      marginRight: 0.1,
-                      fontFamily: "Aller",
-                      fontStyle:"normal",
-                      fontWeight:"400",
-                    }}
-                    textClipMode="ClipToBounds"
-                    textAlign="left"
-                    text={
-                      "Great whites are the world's largest predatory fish, according to Discovery. They grow to be about 4.6 to 6.1 meters or more and can weigh more than 2,268 kilograms. Though massive, the great white is not the biggest shark."
-                    }
-                    fontSize={16}
-                  />
-                </ViroFlexView>
-              </ViroFlexView>
             </ViroNode>
           )}
         </ViroARCamera>
