@@ -13,7 +13,7 @@ import { Image, View, StyleSheet, TouchableHighlight } from "react-native";
 import { ViroARSceneNavigator } from "react-viro";
 import RNFS from "react-native-fs";
 import Share from "react-native-share";
-import { RNPhotoEditor } from "react-native-photo-editor";
+import {RNPhotoEditor} from "react-native-photo-editor";
 import uuid from "react-uuid";
 
 var SharkScene = require("./js/ARSharkApp/SharkScene");
@@ -207,7 +207,7 @@ export default class SharkApp extends Component {
       try {
         RNPhotoEditor.Edit({
           path: photoPath,
-          stickers: ["greatwhitesharktext", "hammerheadtext"],
+          stickers: ["greatwhitesharktext"],
           //   hiddenControls: ['clear', 'crop', 'draw', 'save', 'share', 'sticker', 'text'],
           hiddenControls: ["clear", "crop", "draw", "save", "sticker", "text"],
           colors: undefined,
@@ -227,7 +227,7 @@ export default class SharkApp extends Component {
           },
         });
       } catch (err) {
-        alert(err.message);
+        //alert(err.message);
       }
     //}
   }
