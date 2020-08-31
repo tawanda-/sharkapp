@@ -70,17 +70,3 @@ export default class GreatWhiteSharkScene extends Component {
 }
 
 module.exports = GreatWhiteSharkScene;
-
-//style={{ flexDirection: "column", padding: 1 }}
-
-/**<ViroText
-              width={3.8}
-              height={1}
-              style={{ color: "#ffffff" }}
-              textClipMode="ClipToBounds"
-              textAlign="left"
-              text={
-                "Great whites are the world's largest predatory fish, according to Discovery. They grow to be about 4.6 to 6.1 meters or more and can weigh more than 2,268 kilograms. Though massive, the great white is not the biggest shark."
-              }
-              fontSize={12}
-            /> */

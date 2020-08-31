@@ -1,3 +1,9 @@
 npm update -g react-viro-cli
 react-viro init SharkApp
 ./setup-ide.sh --all
+
+Important: 
+After downloading node modules, you need to copy "react-native-photo-editor" from root folder to modules folder overwritting the one that would have been downloaded.
+
+The project uses viro react https://viromedia.com/viroreact this project is no longer being supported an alternative would be the community supported version https://github.com/ViroCommunity/viro
+
