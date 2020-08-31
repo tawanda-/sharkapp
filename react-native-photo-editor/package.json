@@ -1,0 +1,56 @@
+{
+  "_from": "react-native-photo-editor@0.0.7",
+  "_id": "react-native-photo-editor@0.0.7",
+  "_inBundle": false,
+  "_integrity": "sha512-x7bIyMKkGMWB+gV879rE0nxJ7w6TGL/Kho5RLj3Gtxgjup46y07EW7ig9Nia7JrBMr0B2jVpp1HsNque5Nqg4g==",
+  "_location": "/react-native-photo-editor",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-photo-editor@0.0.7",
+    "name": "react-native-photo-editor",
+    "escapedName": "react-native-photo-editor",
+    "rawSpec": "0.0.7",
+    "saveSpec": null,
+    "fetchSpec": "0.0.7"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-photo-editor/-/react-native-photo-editor-0.0.7.tgz",
+  "_shasum": "f91943e53b4e03fa8751d1756034756a77121f8a",
+  "_spec": "react-native-photo-editor@0.0.7",
+  "_where": "/Users/tawanda/Code/ChatFind/shark-react",
+  "author": {
+    "name": "Pranav Raj Singh Chauhan"
+  },
+  "bugs": {
+    "url": "https://github.com/prscX/react-native-photo-editor/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "pod-installer": "0.0.0"
+  },
+  "deprecated": false,
+  "description": "React Native: Native Photo Editor",
+  "devDependencies": {
+    "prettier-pack": "0.0.8"
+  },
+  "homepage": "https://github.com/prscX/react-native-photo-editor#readme",
+  "keywords": [
+    "react-native"
+  ],
+  "license": "Apache License 2.0",
+  "main": "RNPhotoEditor.js",
+  "name": "react-native-photo-editor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prscX/react-native-photo-editor.git"
+  },
+  "scripts": {
+    "postinstall": "node ../pod-installer/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.7"
+}
